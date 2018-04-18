@@ -1,0 +1,37 @@
+version: '2'
+
+services:
+   
+    mongodb:
+        build: ./mongodb
+        container_name: "mongodb"
+        environment:
+          - MONGO_DATA_DIR=/data/db
+        ports:
+          - 27017:27017
+        volumes:
+          - /data/mongodb/:/data/db
+          - ./logs:/logs
+        networks:
+            asset:
+                ipv4_address: 172.18.9.3
+
+    assets:
+        build: ./AssetsDiscovery
+        container_name: "assets"
+        volumes:
+            - ./AssetsDiscovery:/opt/AssetsDiscovery/
+            - ./logs:/logs
+        depends_on:
+            - mongodb
+        networks:
+            asset:
+                ipv4_address: 172.18.9.4
+
+networks:
+    asset:
+        ipam:
+            config:
+                - driver: default
+                  subnet: 172.18.9.0/24
+                  gateway: 172.18.9.1
