@@ -5,7 +5,7 @@ import os
 
 class MongoConfig(object): 
     # HOST = '127.0.0.1' 
-    MONGO_HOST = '172.18.9.3' 
+    MONGO_HOST = '' 
     MONGO_PORT = 27017
     MONGO_DB = 'Assets'
     MONGO_C_MASSCAN = "MScan"
@@ -14,11 +14,11 @@ class MongoConfig(object):
 
 
 class MysqlConfig(MongoConfig):
-    MYSQL_HOST = '119.97.160.240'
+    MYSQL_HOST = ''
     MYSQL_PORT = 3306
     MYSQL_DB = 'Fscan'
     MYSQL_USER = 'root'
-    MYSQL_PASSWORD = 'hzr1937'
+    MYSQL_PASSWORD = ''
 
 
 class MScanConfig(MysqlConfig):
